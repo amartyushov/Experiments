@@ -1,0 +1,25 @@
+- Install
+brew install postgresql
+
+- Start server
+/usr/local/Cellar/postgresql/9.4.4/bin/pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start
+
+- ln -sfv /usr/local/Cellar/postgresql/9.4.4/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents
+to start postgresql automatically
+
+- launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+load agent (actually postgresql is not started)
+
+- actuallu I have started by
+pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start
+
+- check settings
+egrep 'listen|port' /usr/local/var/postgres/postgresql.conf
+
+- Setup your PATH variable
+export POSTGRESQL_HOME=/usr/local/Cellar/postgresql/9.4.4
+PATH=$POSTGRESQL_HOME/bin:${PATH}
+
+- createdb mydb
+- psql mydb < database_schema
+to create schema from dump

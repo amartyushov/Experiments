@@ -1,0 +1,122 @@
+CREATE KEYSPACE “KeySpace Name”
+WITH replication = {'class': ‘Strategy name’, 'replication_factor' : ‘No.Of   replicas’};
+
+CREATE KEYSPACE test_keyspace
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+
+ALTER KEYSPACE test_keyspace
+WITH REPLICATION = {'class' : 'NetworkTopologyStrategy', 'datacenter1' : 3}
+AND DURABLE_WRITES = false;
+
+DROP KEYSPACE test_keyspace;
+----------------
+
+DESCRIBE keyspaces;
+DESCRIBE COLUMNFAMILIES;
+DESCRIBE type card_details;
+
+SELECT * FROM system_schema.keyspaces;
+
+----------------
+
+USE test_keyspace;
+
+----------------
+
+CREATE TABLE tablename(
+   column1 name datatype PRIMARYKEY,
+   column2 name data type,
+   column3 name data type
+   );
+
+CREATE TABLE customer(
+    firstName text,
+    lastName text,
+    PRIMARY KEY((firstName), lastName)
+    );
+
+
+ALTER TABLE table_name ADD  new_column datatype;SchemaChecker:51
+ALTER TABLE name DROP column_name;
+
+DROP TABLE <tablename>;
+
+CREATE INDEX <identifier> ON <tablename>;
+CREATE INDEX name ON emp1 (emp_name);
+DROP INDEX <identifier>;
+
+----------------
+
+TRUNCATE <tablename>; (To remove all rows from a CQL Table)
+
+----------------
+
+BEGIN BATCH
+ INSERT INTO emp (emp_id, emp_city, emp_name, emp_phone, emp_sal) values(  4,'Pune','rajeev',9848022331, 30000);
+ UPDATE emp SET emp_sal = 50000 WHERE emp_id =3;
+ DELETE emp_city FROM emp WHERE emp_id = 2;
+ APPLY BATCH;
+
+----------------
+
+SELECT * FROM emp WHERE emp_id=5;
+    As far as emp_id is a PRIMARY KEY, you don`t need to build an index or use ALLOW FILTERING;
+
+SELECT * FROM emp WHERE emp_city='Pune' ALLOW FILTERING;
+    As far as emp_city is not a PRIMARY KEY you should use ALLOW FILTERING or create an index for emp_city beforehand
+
+SELECT * FROM emp WHERE emp_city='Pune' AND emp_name='rajeev';
+    Even if you have an index for emp_city you have to use ALLOW FILTERING beacuse of emp_name
+    SELECT * FROM emp WHERE emp_city='Pune' AND emp_name='rajeev' ALLOW FILTERING;
+
+    And even if you have created an index for both emp_city and emp_name you will have to use ALLOW FILTERING
+    (because each index is responsible for particular column, but not a combination)
+    
+DELETE emp_sal FROM emp WHERE emp_id=3; (particular column)
+DELETE FROM emp WHERE emp_id=3; (whole row)
+
+----------------
+
+LIST
+
+CREATE TABLE data(name text PRIMARY KEY,email list<text>);
+INSERT INTO data(name, email) VALUES ('ramu',['abc@gmail.com','cba@yahoo.com']);
+UPDATE data SET email = email +['aaa@mail.com'] where name = 'ramu';
+
+----------------
+
+SET
+
+CREATE TABLE data_set (name text PRIMARY KEY, phone set<varint>);
+INSERT INTO data_set(name, phone)VALUES ('mike', {9848022338,9848022339});
+UPDATE data_set SET phone = phone + {9848022330} where name = 'mike';
+
+----------------
+
+MAP
+
+CREATE TABLE data_map (name text PRIMARY KEY, address map<text, text>);
+INSERT INTO data_map (name, address) VALUES ('mike', {'home' : 'CA' , 'office' : 'DAL' } );
+UPDATE data_map SET address = address+{'office':'NY'} WHERE name = 'mike';
+
+----------------
+
+CREATE TYPE card_details (
+    num int,
+    pin int,
+    name text,
+    cvv int,
+    phone set<int>
+ );
+ALTER TYPE card_details ADD email text;
+ALTER TYPE card_details RENAME email TO mail;
+DROP type card;
+
+----------------
+
+CONSISTENCY;
+EXPAND ON;
+SHOW version;
+SHOW host;
+TRACING  ON | OFF;
+CAPTURE file_to_save_to;

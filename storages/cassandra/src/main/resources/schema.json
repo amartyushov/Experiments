@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Customer",
+  "description": "Customer schema",
+  "type": "object",
+
+  "properties": {
+    "firstName": {
+      "description": "firstName of customer",
+      "type": "string"
+    },
+    "lastName": {
+      "description": "lastName of customer",
+      "type": "string"
+    }
+  },
+
+  "required": ["firstName", "lastName"]
+}

@@ -1,0 +1,81 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: weather; Type: TABLE; Schema: public; Owner: amartyushov; Tablespace: 
+--
+
+
+CREATE TABLE CATEGORY (
+	CAT_ID 		integer primary key,
+	CAT_NAME 	varchar(50)
+);
+
+CREATE TABLE PRODUCT (
+        PROD_ID 	integer primary key,
+        PROD_NAME 	varchar(50)
+);
+
+CREATE TABLE CATEGORY_PRODUCT (
+        CAT_ID 		integer references CATEGORY(CAT_ID),
+	PROD_ID 	integer references PRODUCT(PROD_ID)
+);
+
+CREATE TABLE TEMPORARY (
+        NEW_COLUMN varchar(30),
+        OLD_COLUMN varchar(50)
+);
+
+ALTER TABLE CATEGORY OWNER TO amartyushov;
+ALTER TABLE PRODUCT OWNER TO amartyushov;
+ALTER TABLE CATEGORY_PRODUCT OWNER TO amartyushov;
+ALTER TABLE TEMPORARY OWNER TO amartyushov;
+
+--
+-- Data for Name: weather; Type: TABLE DATA; Schema: public; Owner: amartyushov
+--
+
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: amartyushov
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM amartyushov;
+GRANT ALL ON SCHEMA public TO amartyushov;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

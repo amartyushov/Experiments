@@ -1,0 +1,6 @@
+<dataset>
+    <CATEGORY_PRODUCT CAT_ID="1" PROD_ID="1"/>
+
+    <TEMPORARY NEW_COLUMN="TEST" OLD_COLUMN="TEST"/>
+
+</dataset>

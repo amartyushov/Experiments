@@ -1,0 +1,49 @@
+HOW TO INSTALL:
+pip install cql
+brew install cassandra
+[start] cassandra
+[query] cqlsh
+
+
+http://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlCommandsTOC.html
+
+
+DATA MODEL:
+ keyspace
+ column families (like tables in relational model)
+ keys
+ columns
+
+HOW IT IS STORED:
+memtable (memory)
+    Cassandra does not repeat names of columns
+    Stores writes until reaching a limit => Flushes data to SSTable
+
+SSTable (Disk)
+    Cassandra does not repeat names of columns
+    Immutable
+    compaction: new SSTable instead of multiple old
+
+Commit log (Disk)
+    GOAL: for recovering data in memtable if hardware fails
+    Writes history is recorded here
+    Data is purged after its corresponding data in memtable is flushed to SSTable
+
+* If row is not in memtable, read of row needs look-up in all SSTable files =>
+read is slower than write
+
+INDEX:
+Access data  using non-private key fields other than the partition key.
+If there is no index on normal column, it is not allowed to
+conditionally query by the column.
+
+
+REPLICATION:
+Consistent hashing mechanism is used to distribute data across cluster.
+Each cluster has a partitioner configured for hashing each partition key.
+     Each row of data is uniquely identified by a partition key and distributed
+     across the cluster by the value of token.
+Cass stores replicas on multiple nodes to ensure reliability and fault tolerance.
+Replication factor:
+    1:
+

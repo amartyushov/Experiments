@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <bean id="encryptionImpl" class="io.mart.xml.constructor.EncryptionImpl" />
+
+    <bean id="communication" class="io.mart.xml.constructor.Communication">
+        <constructor-arg type="io.mart.xml.constructor.Encryption">
+            <ref bean="encryptionImpl" />
+        </constructor-arg>
+    </bean>
+
+    <!--
+    Although constructor injection seems simple, it can easily lead to infamous constructor ambiguities
+    in case you have multiple constructors with same number of arguments but different types and if implicit
+    conversion is possible between different types. It happens mostly with primitive type (int, String etc..).
+    You can get rid of these ambiguities using ‘type’ attribute of constructor-arg element to specify exact type of argument e.g.
+    -->
+
+</beans>

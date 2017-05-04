@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/request/post",
+    "headers" : {
+      "Accept" : {
+        "contains" : "xml"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": "response from post"
+  }
+}
