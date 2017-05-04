@@ -1,0 +1,15 @@
+<resources>
+    <string name="hello">Enter any two numbers and
+     select operation and get the result</string>
+    <string name="app_name">ZCalculator</string>
+    <string name="txtFirstNumber">First Number</string>
+    <string name="txtSecondNumber">Second Number</string>
+    <string name="btnResultString">Get Result</string>
+    <string name="txtSpace"> </string>
+
+    <string-array name="spinnerItems">
+        <item>Addition</item>
+        <item>Subtraction</item>
+    </string-array>
+    <string name="title_activity_home">HomeActivity</string>
+</resources>
