@@ -71,7 +71,7 @@ SELECT * FROM emp WHERE emp_city='Pune' AND emp_name='rajeev';
 
     And even if you have created an index for both emp_city and emp_name you will have to use ALLOW FILTERING
     (because each index is responsible for particular column, but not a combination)
-    
+
 DELETE emp_sal FROM emp WHERE emp_id=3; (particular column)
 DELETE FROM emp WHERE emp_id=3; (whole row)
 
@@ -120,3 +120,4 @@ SHOW version;
 SHOW host;
 TRACING  ON | OFF;
 CAPTURE file_to_save_to;
+
