@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UIAutomatorCalculator</string>
+    <string name="label1">field1</string>
+    <string name="label2">field2</string>
+    <string name="button_text_1">multiply</string>
+    <string name="result_field">Result:</string>
+    <string name="input_field_1_hint">first operand</string>
+    <string name="input_field_2_hint">second operand</string>
+</resources>
