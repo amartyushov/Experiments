@@ -34,5 +34,5 @@ public class HintTest {
                 endsWith("operand"), endsWith("operand")))));
     }
 
-    
+
 }
