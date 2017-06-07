@@ -1,13 +1,18 @@
 package io.mart;
 
-import io.restassured.response.*;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static io.restassured.RestAssured.get;
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import static io.restassured.RestAssured.*;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+import static io.restassured.module.jsv.JsonSchemaValidator.settings;
 import static org.hamcrest.Matchers.equalTo;
 
 /**
@@ -81,6 +86,27 @@ public class AssuredTest {
         ArrayList<String> tags = response.path("tags");
         System.out.println(tags);
         System.out.println(response.asString());
+    }
+
+    @Test
+    public void requestSpecBuilderTest(){
+        /*RequestSpecification spec = new RequestSpecBuilder()
+                .setContentType(ContentType.JSON)
+                .setBaseUri("http://node-1.edb.bitplaces.net:8211")
+                .addFilter(new RequestLoggingFilter())
+                .addFilter(new ResponseLoggingFilter())
+                .setAuth(oauth2("Bearer 1#1"))
+                .build();*/
+
+        String response = given()
+                .auth().oauth2("Bearer 1#1")
+                /*.spec(spec)*/
+                .when()
+                .get("http://node-1.edb.bitplaces.net:8211/semantic-tags/AVx9Y5LlAw2YdwhdTKcj")
+                .then()
+                .extract()
+                .asString();
+        System.out.println(response);
     }
 
 }
