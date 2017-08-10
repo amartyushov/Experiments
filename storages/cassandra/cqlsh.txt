@@ -57,6 +57,8 @@ BEGIN BATCH
  DELETE emp_city FROM emp WHERE emp_id = 2;
  APPLY BATCH;
 
+ INSERT into customer (firstname,lastname) value ('name1', 'lastname1');
+
 ----------------
 
 SELECT * FROM emp WHERE emp_id=5;
@@ -120,4 +122,3 @@ SHOW version;
 SHOW host;
 TRACING  ON | OFF;
 CAPTURE file_to_save_to;
-
