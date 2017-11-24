@@ -1,0 +1,3 @@
+docker run -p 3306:3306 --name martSQL -e MYSQL_ROOT_PASSWORD=pass -d mysql
+
+docker exec -it martSQL mysql -uroot -p

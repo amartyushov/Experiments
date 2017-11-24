@@ -18,9 +18,12 @@ public class AppConfig {
     /*
      * PropertySourcesPlaceHolderConfigurer Bean only required for @Value("{}") annotations.
      * Remove this bean if you are not using @Value annotations for injecting properties.
+     *
+     * This bean is required for spring version < 4.2
      */
-    @Bean
+
+    /*@Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
-    }
+    }*/
 }

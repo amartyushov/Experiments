@@ -1,4 +1,4 @@
-package io.mart.annotations.autowired.setter;
+package io.mart.annotations;
 
 import org.springframework.stereotype.Component;
 

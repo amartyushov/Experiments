@@ -1,4 +1,4 @@
-package io.mart.annotations.resource;
+package io.mart.annotations;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
