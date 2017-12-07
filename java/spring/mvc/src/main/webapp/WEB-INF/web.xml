@@ -12,7 +12,8 @@
 
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring-mvc-demo-servlet.xml</param-value> <!-- where spring context config is-->
+            <!--<param-value>/WEB-INF/spring-mvc-demo-servlet.xml</param-value> --> <!-- It is for spring mvn examples. where spring context config is-->
+            <param-value>/WEB-INF/spring-mvc-crud-demo-servlet.xml</param-value> <!--for spring mvc + Hibernate examples-->
         </init-param>
 
         <load-on-startup>1</load-on-startup>

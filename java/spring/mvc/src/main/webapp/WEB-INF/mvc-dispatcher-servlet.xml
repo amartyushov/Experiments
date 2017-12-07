@@ -4,7 +4,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
     <!--if an URL with /welcome.htm pattern is requested, the HelloWorldController controller will handle the request.-->
-    <bean name="/welcome.htm" class="io.mart.HelloWorldController" />
+    <bean name="/welcome.htm" class="io.mart.initial_controller_examples.HelloWorldController" />
 
     <!--Define how Spring will look for the view template.
     In this case, the controller HelloWorldController will return a view named HelloWorldPage,

@@ -1,4 +1,4 @@
-package io.mart;
+package io.mart.initial_controller_examples;
 
 import java.util.LinkedHashMap;
 

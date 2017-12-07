@@ -1,4 +1,4 @@
-package io.mart;
+package io.mart.initial_controller_examples;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

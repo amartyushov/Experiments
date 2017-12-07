@@ -1,0 +1,11 @@
+package io.mart.aop;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+@Configuration
+@EnableAspectJAutoProxy
+@ComponentScan("io.mart.aop")
+public class DemoConfig {
+}

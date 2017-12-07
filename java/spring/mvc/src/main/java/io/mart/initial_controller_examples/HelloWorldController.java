@@ -1,4 +1,4 @@
-package io.mart;
+package io.mart.initial_controller_examples;
 
 import org.springframework.web.servlet.mvc.AbstractController;
 import javax.servlet.http.HttpServletRequest;
