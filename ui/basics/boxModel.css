@@ -1,0 +1,44 @@
+p {
+	border: 2px solid blue;
+
+	width: 50%; /*percentage of parent element*/
+	
+	padding: 10px; /*Can specify left, right etc*/
+
+	margin: 20px;
+}
+
+td {
+	width: 100px;
+	height: 100px;
+}
+
+table {
+	margin: auto;
+}
+
+.vertical {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.horizontal {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+img {
+	width: 30%;
+	float: left;
+	margin: 1.66%;
+}
+
+h1 {
+	font-family: Spectral SC;
+	margin-left: 1.66%;
+	font-size: 23px;
+	text-transform: uppercase;
+	border-bottom: 1px solid black;
+	width: 30%;
+	padding-bottom: 20px;
+}

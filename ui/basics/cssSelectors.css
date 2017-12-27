@@ -1,0 +1,40 @@
+/* Element selector */
+li {  
+	border: 2px solid red;
+} 
+
+/*ID selector*/
+#particular { 
+	background: yellow;
+}
+
+/*Class selector*/
+.highlight {
+	background: green;
+}
+
+/*Star selector - everything on the page*/
+* {
+	border: 1px solid lightgrey;
+}
+
+/*Descendant selector. Here works only for a tags which are inside li
+is it also possible to use it for classes 'li .className'*/
+li a {
+	color: red;
+}
+
+/* Adjacent Selector. It means selectors which are placed on the same level and after particular selector*/
+a + h4 { /* All h4 after a */
+	border: 2px solid red;
+}
+
+/*Attribute selector*/
+a[href="http://google.com"] {
+	background: #120000;
+}
+
+/*nth of type*/
+li:nth-of-type(4) { /*valu can be 'even'*/
+	background: purple;
+}

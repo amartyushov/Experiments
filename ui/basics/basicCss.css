@@ -1,0 +1,25 @@
+body {
+	background: url(https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=f07144a83b4b274ad84032a47579665a);
+	background-repeat: no-repeat; /*if picture does not fit background then do not repeat it */
+	background-size: cover; /* stretch image to fit a screen*/
+}
+
+h1 {
+	color: #FF8800;
+
+	border-color: purple; /* only they three together can affect border*/
+	border-width: 5px;
+	border-style: solid;
+
+	/*same to express it as */ border: 5px solid purple;
+}
+
+h4 {
+	color: rgba(255,0,0, .2);
+	background: rgb(0,255,0);
+}
+
+
+li {
+	color: rgb(68, 200, 100);
+}

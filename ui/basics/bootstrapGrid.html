@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap grid</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+
+	<style type="text/css">
+		.pink {
+			background: pink;
+			border: 1px solid purple;
+		}
+
+		.orange {
+			background: orange;
+			border: 1px dashed red;
+			height: 50px;
+		}
+	</style>
+</head>
+</head>
+<body>
+
+	<div class="container">
+		
+		<!--<div class="row">
+			<div class="col-lg-2 pink">COL LARGE 6</div>
+			<div class="col-lg-8 pink">COL LARGE 6</div>
+			<div class="col-lg-2 pink">COL LARGE 6</div>
+		</div>-->
+
+		<div class="row">
+			<div class="col-md-3 col-sm-6 pink">COL LARGE 3</div> <!-- col-lg-3  is included automatically, as far as medium has same value-->
+			
+			<div class="col-md-3 col-sm-6 pink">
+				<div class="row">
+					<div class="col-lg-6 orange">FIRST HALF</div>
+					<div class="col-lg-6 orange">SECOND HALF</div>
+				</div>
+			</div>
+			
+			<div class="col-md-3 col-sm-6 pink">COL LARGE 3</div>
+			<div class="col-md-3 col-sm-6 pink">
+				<div class="row">
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+					<div class="col-lg-2 orange"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
