@@ -1,0 +1,112 @@
+/*plugins {
+    id 'java-gradle-plugin'
+}*/
+
+apply plugin: 'java-gradle-plugin'
+
+task hello {
+	group 'myGroup'
+	description 'Description of my group'
+    doLast {
+        println 'Execution phase: Hello Gradle'
+    }
+}
+
+task anotherTask {
+    println 'Configuration phase: I always get printed even though, I am not invoked'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    testCompile 'junit:junit:4.12'
+}
+
+description ="""
+Example project for a Gradle build
+
+Project name: ${project.name}
+
+More detailed information here... """
+
+
+
+// ------------------------------------- 
+
+
+defaultTasks 'cleanTask', 'compileTask'  // executed if no task is specified
+
+task cleanTask {
+    doLast {
+        println 'Executing the clean task'
+    }
+}
+
+task compileTask {
+    doLast {
+        println 'Executing the compile task'
+    }
+}
+
+task other(dependsOn: 'compileTask') {
+    doLast {
+        println "depends on compile Task"
+    }
+}
+
+task cleanOther {
+    doLast {
+        println "depends on clean and conpile task"
+    }
+}
+
+cleanOther.dependsOn cleanTask, compileTask // order how this 'parent' tasks are executed is alphabetical
+
+
+// ------------------------------------- 
+
+task invokedAfterCompileJava(dependsOn: 'compileJava')  {
+    doLast {
+        println 'This will be invoked right after the compileJava task is done'
+    }
+}
+
+// alternative way is
+compileJava.doFirst { println 'Another action applied to the "compileJava" task' }
+
+task buy {
+    doFirst {
+        println 'doLast from task'
+    }
+}
+buy.doFirst { println 'customised doFirst'} // this goes before doFirst from task
+
+// ------------------------------------- 
+
+task skipping {
+    doFirst {
+        println 'skipping task'
+    }
+}
+
+skipping.onlyIf {
+    project.hasProperty('notSkipping')
+}
+
+skipping.doFirst {
+    if (!notSkipping) {
+        throw new StopExecutionException()
+    }
+}
+
+// ------------------------------------- 
+//def homePath = System.properties['user.home']
+// ------------------------------------- 
+
+
+
+
