@@ -7,7 +7,7 @@ class FileOperations {
 
     public static void main(String[] args) {
         FileOperations o = new FileOperations();
-        o.eachFileRecurse()
+        print System.getProperty("user.dir");
 
     }
 
