@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Handler tests performance summary</title>
+		<link rel="Stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		</link>
+	</head>
+	<body class="container">
+		<h2>Tests exceeded duration</h2>
+		<div>
+			<table class="table table-sm table-hover">
+				<tr>
+					<th>Duration, ms</th>
+					<th>Count</th>
+					<th>Method</th>
+				</tr>
+				<tr>
+					<td>702</td>
+					<td>1</td>
+					<td>io.mart.AppTest.testFailing</td>
+				</tr>
+				<tr>
+					<td>388</td>
+					<td>9</td>
+					<td>io.mart.AppTestSecond.testWithProvider</td>
+				</tr>
+				<tr>
+					<td>323</td>
+					<td>5</td>
+					<td>io.mart.AppTestSecond.testWithProvider2</td>
+				</tr>
+				<tr>
+					<td>223</td>
+					<td>3</td>
+					<td>io.mart.AppTest.testWithProvider3</td>
+				</tr>
+				<tr>
+					<td>215</td>
+					<td>3</td>
+					<td>io.mart.AppTestSecond.testProvider3</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<body class="container">
+		<h2>Hooks exceeded duration</h2>
+		<div>
+			<table class="table table-sm table-hover">
+				<tr>
+					<th>Duration, ms</th>
+					<th>Count</th>
+					<th>Method</th>
+				</tr>
+				<tr>
+					<td>1821</td>
+					<td>6</td>
+					<td>io.mart.AppTest.beforeMethod</td>
+				</tr>
+				<tr>
+					<td>502</td>
+					<td>1</td>
+					<td>io.mart.AppTestSecond.afterClass</td>
+				</tr>
+				<tr>
+					<td>204</td>
+					<td>1</td>
+					<td>io.mart.AppTest.beforeClass</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<body class="container">
+		<h2>Tests exceeded count</h2>
+		<div>
+			<table class="table table-sm table-hover">
+				<tr>
+					<th>Duration, ms</th>
+					<th>Count</th>
+					<th>Method</th>
+				</tr>
+				<tr>
+					<td>388</td>
+					<td>9</td>
+					<td>io.mart.AppTestSecond.testWithProvider</td>
+				</tr>
+				<tr>
+					<td>323</td>
+					<td>5</td>
+					<td>io.mart.AppTestSecond.testWithProvider2</td>
+				</tr>
+				<tr>
+					<td>215</td>
+					<td>3</td>
+					<td>io.mart.AppTestSecond.testProvider3</td>
+				</tr>
+				<tr>
+					<td>223</td>
+					<td>3</td>
+					<td>io.mart.AppTest.testWithProvider3</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<body class="container">
+		<h2>Hooks exceeded count</h2>
+		<div>
+			<table class="table table-sm table-hover">
+				<tr>
+					<th>Duration, ms</th>
+					<th>Count</th>
+					<th>Method</th>
+				</tr>
+				<tr>
+					<td>1821</td>
+					<td>6</td>
+					<td>io.mart.AppTest.beforeMethod</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
