@@ -22,3 +22,7 @@ discovery-tests/src/main/resources/scripts/cassandra/dsc-cassandra-*
 discovery-tests/src/main/resources/scripts/cassandra/FCC_repo
 discovery-tests/src/main/resources/scripts/MASS/log/*
 lizard/src/main/resources/etc/development/*
+
+**/.gradle
+**/build/
+**/out/
