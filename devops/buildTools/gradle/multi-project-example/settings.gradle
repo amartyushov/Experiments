@@ -1,0 +1,5 @@
+rootProject.name = 'multi-project-example'
+
+include 'greeting-library'
+include 'greeter'
+include 'docs'
