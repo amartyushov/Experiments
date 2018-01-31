@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.10'
+}
+test.useTestNG()
+
+tasks.withType(Test) {
+    systemProperty "test.Property", System.getProperty("test.Property")
+}
