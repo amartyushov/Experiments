@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.5"
+    }
+}
+
+apply plugin: 'io.qameta.allure'
+apply plugin: 'java'
+
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+version = '1.0-SNAPSHOT'
+defaultTasks 'clean', 'test'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    agent
+}
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:${aspectjVersion}"
+    testCompile group: 'io.qameta.allure', name: 'allure-maven', version: '2.9'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.0'
+}
+
+test.doFirst {
+    jvmArgs "-javaagent:${configurations.agent.singleFile}"
+}
+
+test {
+    useTestNG() {
+//        suiteXmlFiles << new File(rootDir, "testng.xml") //This is how to add custom testng.xml
+    }
+}
+
+// HOW TO EXECUTE: gradle clean test; allure serve build/allure-results
+
+
