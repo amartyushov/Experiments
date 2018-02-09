@@ -14,7 +14,6 @@ public class AppTest extends AbstractTestClass{
     @BeforeMethod
     public void beforeMethod() throws InterruptedException {
         Thread.sleep(300);
-
     }
 
     @Test

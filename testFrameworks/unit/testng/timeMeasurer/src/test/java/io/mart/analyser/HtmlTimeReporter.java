@@ -21,11 +21,11 @@ public class HtmlTimeReporter extends AbstractTimeReporter {
                 .title("Handler tests performance summary")
                 .linkCss("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
 
-        createTable(taskView, testsExceededDuration(150), "Tests exceeded duration");
-        createTable(taskView, hooksExceededDuration(150), "Hooks exceeded duration");
+        createTable(taskView, testsExceededDuration(warnDuration), "Tests exceeded duration");
+        createTable(taskView, hooksExceededDuration(warnDuration), "Hooks exceeded duration");
 
-        createTable(taskView, testsExceededCount(1), "Tests exceeded count");
-        createTable(taskView, hooksExceededCount(1), "Hooks exceeded count");
+        createTable(taskView, testsExceededCount(warnCount), "Tests exceeded count");
+        createTable(taskView, hooksExceededCount(warnCount), "Hooks exceeded count");
 
         try(PrintStream out = new PrintStream(new FileOutputStream("TaskTable.html"))){
             taskView.setPrintStream(out).write();

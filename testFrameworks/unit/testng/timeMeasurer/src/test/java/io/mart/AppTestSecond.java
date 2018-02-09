@@ -14,7 +14,11 @@ public class AppTestSecond extends AbstractTestClass{
     @BeforeClass
     public void beforeClass() throws InterruptedException {
         Thread.sleep(100);
+    }
 
+    @BeforeMethod
+    public void beforeMethod() throws InterruptedException {
+        Thread.sleep(300);
     }
 
     @Test(dataProvider = "getData2")
@@ -40,8 +44,7 @@ public class AppTestSecond extends AbstractTestClass{
 
 
 
-
-    @DataProvider
+    @DataProvider(parallel=true)
     public Object[][] getData3() {
         return new Object[][]{{5, "five"}, {6, "six"}, {6, "six"}};
     }
@@ -49,11 +52,17 @@ public class AppTestSecond extends AbstractTestClass{
 
     @Test(dataProvider = "getData3")
     public void testProvider3(int p1, String p2) throws InterruptedException {
-        Thread.sleep(70);
+        Thread.sleep(700);
     }
 
     @Test
     public void testFailing() throws InterruptedException {
+        Thread.sleep(100);
+        throw new RuntimeException("sdsd");
+    }
+
+    @Test
+    public void testFailing2() throws InterruptedException {
         Thread.sleep(100);
     }
 

@@ -7,14 +7,18 @@ public class Info {
     private Integer count;
     private boolean isTest;
 
-    public Info(Long duration, Integer count, boolean isTest) {
-        this.duration = duration;
-        this.count = count;
+    public Info(TimerPerThread timer, boolean isTest) {
+        this.duration = timer.duration();
+        this.count = 1;
         this.isTest = isTest;
     }
 
-    public void incrementDuration(Long delta) {
-        duration += delta;
+    public void incrementDuration(TimerPerThread timer) {
+        if (timer.isNotFromMainThread()){
+            this.duration = Math.max(this.duration, timer.duration());
+        } else {
+            duration += timer.duration();
+        }
     }
 
     public void incrementCount() {
@@ -27,10 +31,6 @@ public class Info {
 
     public Integer getCount() {
         return count;
-    }
-
-    public void isTest(boolean flag) {
-        isTest = flag;
     }
 
     public boolean isTest() {
