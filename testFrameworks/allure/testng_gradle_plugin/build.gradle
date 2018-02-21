@@ -1,0 +1,63 @@
+plugins {
+    id "io.qameta.allure" version "2.5"
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+allure {  // https://github.com/allure-framework/allure-gradle
+    autoconfigure = true
+    version = '2.6.0'
+    // specify report generator version, note, this property is necessary to enable allure and aggregatedAllureReport tasks
+
+    // downloadLink = 'https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.zip'
+    // custom location of Allure distribution to download from,
+    // by default allure is downloaded from bintray by specified version and installed to .allure folder in the project root.
+}
+
+configurations {
+    agent
+}
+
+test {
+    doFirst {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
+    useTestNG()
+}
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:1.8.0"
+    testCompile group: 'org.testng', name: 'testng', version: '6.13.1'
+    //testCompile group: 'io.qameta.allure', name: 'allure-maven', version: '2.9'
+    // this is needed only for allure annotations for source code
+}
+
+/**
+ * How to run:
+ * first execute tests itself:
+ * gradle clean test
+ *
+ * as a result build/allure-results folder is generated
+ *
+ * now you need to make a report out of this generated data
+ * if you want to make it using gradle plugin =>
+ * first download binaries which will take care of report generation + json interpretation
+ *
+ * gradle downloadAllure
+ * => .allure folder is created with binaries inside
+ * (gradle allureReport makes downloadAllure under the hood)
+ *
+ * than finally to create and open report in browser
+ * gradle allureServe
+ */
+
+
+
