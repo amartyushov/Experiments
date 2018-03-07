@@ -1,0 +1,45 @@
+# Load Balancer is configured to listen ports 80 and 443 for HTTP traffic + Dashboard on 8080
+# Listen and proxy traffic to containers, based on lables of the container
+
+# Traefik is listening to Docker Events, when new containers are started it can automatically update its configuration.
+# This allows you to take advantage of a dynamic infrastructure which self-learns and heals based on what's running.
+# docker-compose scale machine=2
+
+# Dashboard: highlight which routes exist and which containers the traffic is being proxied too.
+# The second is to show the health status of the cluster and if errors are being returned.
+# If so, which container is causing the problem. 
+
+
+
+
+traefik: #reverse proxy
+  image: traefik
+  command: --web --docker --docker.domain=docker.localhost --logLevel=DEBUG
+  ports:
+    - "80:80"
+    - "8080:8080"
+    - "443:443"
+  volumes:
+    # listen to the Docker Host Daemon Events and reconfigure itself when containers are started/stopped
+    # find additional metadata about the containers, such as which domain name they process
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /dev/null:/traefik.toml
+
+machine:
+  image: katacoda/docker-http-server
+  labels:
+    - "traefik.backend=machine-echo"
+    - "traefik.frontend.rule=Host:machine-echo.example.com"
+# traefik.backend=foo assign the container to foo backend
+# traefik.port=80 register this port. Useful when the container exposes multiples ports
+# traefik.protocol=https override the default http protocol
+# traefik.weight=10 assign this weight to the container
+# traefik.frontend.rule=Host:test.traefik.io override the default frontend rule (Default: Host:{containerName}.{domain})
+# traefik.docker.network Set the Docker network to use for connections to this container
+# More details can be found at https://docs.traefik.io/toml/#docker-backend
+
+echo:
+  image: katacoda/docker-http-server:v2
+  labels:
+    - "traefik.backend=echo"
+    - "traefik.frontend.rule=Host:echo-echo.example.com"

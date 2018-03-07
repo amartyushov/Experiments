@@ -1,0 +1,8 @@
+Docs
+https://github.com/lightbend/config
+
+Integration with guice
+https://github.com/racc/typesafeconfig-guice
+
+Best practice
+http://www.janvsmachine.net/2016/07/effective-typesafe-config.html

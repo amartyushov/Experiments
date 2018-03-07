@@ -1,0 +1,4 @@
+db:
+  user: database_user
+  pass: database_pass
+  schema: database_schema
