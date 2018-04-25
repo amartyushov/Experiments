@@ -75,4 +75,9 @@ public class SimpleTest {
         log.info("yes: {}", fallbackConfig.getBoolean("featureFlags.featureA"));
         log.info("true: {}", fallbackConfig.getBoolean("featureFlags.featureB"));
     }
+
+    @Test
+    public void propertyWithDefault(){
+        log.info("port: {}", fallbackConfig.getInt("tomcat_port"));
+    }
 }
