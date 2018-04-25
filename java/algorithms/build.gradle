@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+dependencies {
+	testCompile 'org.slf4j:slf4j-log4j12:1.7.25'
+	testCompile 'org.testng:testng:6.10'
+	testCompile 'org.projectlombok:lombok:1.16.20' // IDEA -> enable annotation processing
+	testCompile 'io.github.sskorol:test-data-supplier:1.5.0'
+	compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.1'
+	compile([group: 'tech.blueglacier', name: 'email-mime-parser', version: '1.0.3'])
+
+
+}
+test.useTestNG()
