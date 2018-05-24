@@ -44,5 +44,12 @@ test {
     }
     useTestNG()
     testLogging.showStandardStreams = true
+
+    options {
+        systemProperties(System.getProperties())
+        if (project.properties.tags) {
+            systemProperty 'cucumber.options', "--tags ${project.properties.tags}"
+        }
+    }
 }
 
