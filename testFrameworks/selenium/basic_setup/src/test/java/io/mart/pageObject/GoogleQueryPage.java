@@ -1,10 +1,8 @@
-package io.mart.pageObject_v1;
+package io.mart.pageObject;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 @Slf4j
 public class GoogleQueryPage {

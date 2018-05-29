@@ -1,13 +1,12 @@
-package io.mart.pageObject_v1;
+package io.mart.pageFactory;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class PageObjectTest {
+public class PageFactoryTest {
 
 	private WebDriver driver;
 
@@ -17,7 +16,7 @@ public class PageObjectTest {
 	}
 
 	@Test
-	public void testGoogleSearch() throws Exception {
+	public void testGoogleSearch() {
 		driver.get("http://google.com");
 		GoogleQueryPage queryPage = new GoogleQueryPage(driver);
 		queryPage
