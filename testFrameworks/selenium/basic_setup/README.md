@@ -57,4 +57,4 @@ public void logBeforeTestsStart() {
 WebElement element = driver.findElement(By.name("sample"));
 ```
 
-
+- @CacheLookup can be useful to annotate WebElement
