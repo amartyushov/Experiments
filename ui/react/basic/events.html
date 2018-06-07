@@ -1,0 +1,44 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel="stylesheet" href="events.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    const place = document.getElementById('root');
+
+    var Task = React.createClass ({
+      edit: function () {   // this is functions of the component
+        alert("Edit was pressed")
+      },
+
+      remove: function () {   // this is functions of the component
+        alert("Remove was pressed")
+      },
+
+      render: function() {
+        return (
+          <div className="box">
+            <div className="text">{this.props.children}</div>
+            <button onClick={this.edit} className="btn light">Edit</button>
+            <button onClick={this.remove} className="btn red">Delete</button>
+          </div>
+        )
+      }
+    })
+
+    ReactDOM.render(   // this renders component to element with id=root
+      <div>
+        <Task>Hey it is me</Task>
+        <Task>Second</Task>
+        <Task>Third</Task>
+      </div>,
+      place
+    )
+    </script>
+</body>
+</html>

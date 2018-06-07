@@ -1,0 +1,34 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    var Game = React.createClass ({
+      render: function () {
+        return (
+          <div>
+            <h1> {this.props.name}</h1>
+            <h3> {this.props.age}</h3>
+          </div>
+        )
+      }
+    })
+
+    const place = document.getElementById('root');
+
+    ReactDOM.render(   // this renders component to element with id=root
+      <div>
+        <Game name="Forza" age="18+"/>
+        <Game name="Mortal combat" age="14+"/>
+        <Game name="GTA" age="10+"/>
+      </div>,
+      place
+    )
+    </script>
+</body>
+</html>

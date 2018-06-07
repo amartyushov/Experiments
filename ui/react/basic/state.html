@@ -1,0 +1,47 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+<link rel="stylesheet" href="events.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    const place = document.getElementById('root');
+
+    var Check = React.createClass ({
+      getInitialState: function() {
+        return {checked: true}
+      },
+
+      handleCheck: function(){
+
+      },
+
+      render: function() {
+        var message;
+        if (this.state.checked) {
+          message = "It was checked"
+        } else {
+          message = "It was NOT checked"
+        }
+        return (
+          <div>
+            <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+            <p>Checkbox: {message}</p>
+          </div>
+        );
+      }
+    })
+
+    ReactDOM.render(   // this renders component to element with id=root
+      <div>
+        <Check />
+      </div>,
+      place
+    )
+    </script>
+</body>
+</html>

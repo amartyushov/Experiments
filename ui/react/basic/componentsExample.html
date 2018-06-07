@@ -1,0 +1,29 @@
+<html>
+<head>
+<script src="https://unpkg.com/react@15/dist/react.min.js"> </script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"> </script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+    var Block = React.createClass ({
+      render: function () {
+          return (<h3>This is a component {3+5}</h3>) // inside of {} you place just javascript
+      }
+    }); // this is component
+
+  
+    const place = document.getElementById('root');
+
+    ReactDOM.render(   // this renders component to element with id=root
+      <div>
+        <Block/>
+        <Block/>
+      </div>,
+      place
+    )
+    </script>
+</body>
+</html>
