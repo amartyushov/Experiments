@@ -1,0 +1,54 @@
+plugins {
+	id "io.qameta.allure" version "2.5"
+}
+
+allure {
+	version = '2.6.0'
+	aspectjweaver = true
+
+	useCucumberJVM {
+		version = '2.0-BETA21'
+	}
+}
+
+configurations {
+	agent
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	jcenter()
+}
+
+dependencies {
+	agent "org.aspectj:aspectjweaver:1.8.0"
+	testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.0'
+	testCompile group: 'io.qameta.allure', name: 'allure-cucumber-jvm', version: '2.6.0'  // also smth previous
+
+	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.11.0'
+	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
+
+	testCompile 'ru.yandex.qatools.ashot:ashot:1.5.4'
+	testCompile 'io.github.prashant-ramcharan:courgette-jvm:2.4.0'
+}
+
+test {
+	doFirst {
+		jvmArgs "-javaagent:${configurations.agent.singleFile}"
+	}
+	useTestNG()
+	testLogging.showStandardStreams = true
+
+	options {
+		systemProperties(System.getProperties())
+		if (project.properties.tags) {
+			systemProperty 'cucumber.options', "--tags ${project.properties.tags}"
+		}
+	}
+}
+
