@@ -43,6 +43,8 @@ test {
 	}
 	useTestNG()
 	testLogging.showStandardStreams = true
+	outputs.upToDateWhen { false }
+
 
 	options {
 		systemProperties(System.getProperties())

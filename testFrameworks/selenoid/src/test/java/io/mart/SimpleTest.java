@@ -18,11 +18,11 @@ public class SimpleTest {
 	@Test
 	public void testMethod() throws InterruptedException, MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setBrowserName("firefox");
-		capabilities.setVersion("60.0");
+		capabilities.setBrowserName("chrome");
+		capabilities.setVersion("66.0");
 		capabilities.setCapability("enableVNC", true);
-		capabilities.setCapability("enableVideo", true);
-		capabilities.setCapability("videoName", "my-cool-video.mp4");
+//		capabilities.setCapability("enableVideo", true);
+//		capabilities.setCapability("videoName", "my-cool-video.mp4");
 		capabilities.setCapability("name", "myCoolTestName");    // session have this name on UI
 
 

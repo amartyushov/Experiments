@@ -35,49 +35,10 @@ public class SimpleTest {
                 .resolve();
     }
 
-    @Test
-    public void overriding(){
-        log.info("name: {}", defaultConfig.getString("conf.name"));
-        log.info("name: {}", fallbackConfig.getString("conf.name"));
-        log.info("title: {}", defaultConfig.getString("conf.title"));
-        log.info("title: {}", fallbackConfig.getString("conf.title"));
-    }
 
-    @Test
-    public void placeHolders(){
-        log.info("combined: {}", fallbackConfig.getString("conf.combined"));
-    }
-
-    @Test
-    public void durationResolution(){
-        log.info("redis.ttl minutes: {}", fallbackConfig.getDuration("redis.ttl", TimeUnit.MINUTES));
-        log.info("redis.ttl seconds: {}", fallbackConfig.getDuration("redis.ttl", TimeUnit.SECONDS));
-    }
-
-    @Test
-    public void memoryResolution(){
-        // Any path in the configuration can be treated as a separate Config object.
-        Config uploadService = fallbackConfig.getConfig("uploadService");
-        log.info("maxChunkSize bytes: {}", uploadService.getMemorySize("maxChunkSize").toBytes());
-        log.info("maxFileSize bytes: {}", uploadService.getMemorySize("maxFileSize").toBytes());
-    }
-
-    @Test
-    public void handlingLists(){
-        List<Integer> whiteList = fallbackConfig.getIntList("conf.nested.whitelistIds");
-        log.info("whitelist: {}", whiteList);
-        List<String> whiteListStrings = fallbackConfig.getStringList("conf.nested.whitelistIds");
-        log.info("whitelist as Strings: {}", whiteListStrings);
-    }
-
-    @Test
-    public void handlingBooleans(){
-        log.info("yes: {}", fallbackConfig.getBoolean("featureFlags.featureA"));
-        log.info("true: {}", fallbackConfig.getBoolean("featureFlags.featureB"));
-    }
 
     @Test
     public void propertyWithDefault(){
-        log.info("port: {}", fallbackConfig.getInt("tomcat_port"));
+        log.info("port: {}", defaultConfig.getInt("tomcat_port"));
     }
 }

@@ -1,0 +1,120 @@
+import groovyx.gpars.GParsPool
+
+buildscript {
+    repositories {
+        maven {
+            url "http://repo.bodar.com"
+        }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.codehaus.gpars:gpars:1.2.1"
+    }
+}
+
+plugins {
+    id "io.qameta.allure" version "2.5"
+}
+repositories {
+    maven {
+        url "http://repo.bodar.com"
+    }
+    mavenCentral()
+
+}
+
+allure {
+    version = '2.6.0'
+    aspectjweaver = true
+
+    useCucumberJVM {
+        version = '2.0-BETA21'
+    }
+}
+
+configurations {
+    agent
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+
+dependencies {
+    agent "org.aspectj:aspectjweaver:1.8.0"
+    testCompile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.9.0'
+    testCompile group: 'io.qameta.allure', name: 'allure-cucumber-jvm', version: '2.6.0'  // also smth previous
+
+    testCompile 'ru.yandex.qatools.ashot:ashot:1.5.4'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+
+    compile(
+            "org.codehaus.groovy:groovy-all:2.4.7"
+    )
+    compile files("$buildDir/classes/test")
+
+}
+
+test {
+    doFirst {
+        jvmArgs "-javaagent:${configurations.agent.singleFile}"
+    }
+    useTestNG()
+    testLogging.showStandardStreams = true
+
+    options {
+        systemProperties(System.getProperties())
+        if (project.properties.tags) {
+            systemProperty 'cucumber.options', "--tags ${project.properties.tags}"
+        }
+    }
+}
+
+task runInParallel {
+    doLast {
+        def testProperties = "-DsomePropertie=somePropertie"
+        runCucumberTests2(testProperties, "@this")
+    }
+}
+
+def runCucumberTests(testProperties, tag) {
+    def features = fileTree(dir: "${project.projectDir}/src/test/resources/features/").include '**/*.feature'
+
+    GParsPool.withPool(10) {
+        features.eachParallel { File file ->
+            exec {
+                executable "sh"
+                args "-c", "mkdir -p ${reporting.baseDir}/cucumber" +
+                        "&& java ${testProperties} " +
+                        "-cp ${sourceSets.test.runtimeClasspath.asPath} " +
+                        "cucumber.api.cli.Main " +
+                        "--glue io.mart " +
+                        "${project.projectDir}/src/test/resources/features/${file.name} " +
+                        "--plugin io.qameta.allure.cucumberjvm.AllureCucumberJvm " +
+//                        "--plugin pretty > ${reporting.baseDir}/cucumber/${file.name}.log " +
+                        "--tags ${tag}"
+            }
+            println("${file.name}: Scenario output: ${reporting.baseDir}/cucumber/${file.name}.log ")
+        }
+    }
+}
+
+def runCucumberTests2(testProperties, tag) {
+    def features = fileTree(dir: "${project.projectDir}/src/test/resources/features/").include '**/*.feature'
+
+    GParsPool.withPool(10) {
+        features.eachParallel { File file ->
+            exec {
+                executable "sh"
+                args "-c", "gradle test -Dcucumber.options=${project.projectDir}/src/test/resources/features/${file.name}"
+            }
+        }
+    }
+}
