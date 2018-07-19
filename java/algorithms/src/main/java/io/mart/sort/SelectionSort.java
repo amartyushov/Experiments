@@ -15,7 +15,7 @@ public class SelectionSort {
         Integer[] one = new Integer[]{1};
         Integer[] two = new Integer[]{1, 2};
 
-        System.out.println(Arrays.toString(selectionSortShorter(big)));
+        System.out.println(Arrays.toString(after(unsorted)));
     }
 
     public static Integer[] selectionSortMy(Integer[] unsorted) {
@@ -58,5 +58,23 @@ public class SelectionSort {
         return unsorted;
     }
 
+
+    public static Integer[] after(Integer[] unsorted) {
+
+        for (int i = 0; i<unsorted.length-1; i++) {
+            int minIndex = i;
+            for (int j = i; j <unsorted.length; j++) {
+                if (unsorted[j] < unsorted[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                int temp = unsorted[i];
+                unsorted[i] = unsorted[minIndex];
+                unsorted[minIndex] = temp;
+            }
+        }
+        return unsorted;
+    }
 
 }

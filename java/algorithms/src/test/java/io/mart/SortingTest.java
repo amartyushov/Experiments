@@ -2,6 +2,7 @@ package io.mart;
 
 import io.github.sskorol.core.DataSupplier;
 import io.mart.sort.BubbleSort;
+import io.mart.sort.SelectionSort;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,8 +16,8 @@ import static org.testng.Assert.assertTrue;
 
 public class SortingTest {
 
-    private Class classWithAlg = BubbleSort.class;
-    private String methodName = "bubbleSortMyOptimised";
+    private Class classWithAlg = SelectionSort.class;
+    private String methodName = "again";
     private Method method = null;
 
     @BeforeClass
@@ -41,6 +42,7 @@ public class SortingTest {
     @Test(dataProvider = "getData")
     public void smallUnsorted(final Pair pair) {
         Integer[] sorted = sort(pair.getUnsorted());
+	    System.out.println(Arrays.toString(sorted));
         assertEquals(pair.getSorted(),sorted,"Algorithm returned " + Arrays.toString(sorted));
     }
 

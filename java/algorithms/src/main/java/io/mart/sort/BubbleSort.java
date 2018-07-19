@@ -10,11 +10,13 @@ public class BubbleSort {
     public static void main(String[] args) {
         BubbleSort s = new BubbleSort();
         Integer[] unsorted = new Integer[]{4,3,2,1};
-        Integer[] sorted = new Integer[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+        Integer[] sorted = new Integer[]{5,6,1,2,3,4};
         Integer[] semisorted = new Integer[]{4,2,3,1};
         Integer[] big = new Integer[]{4,1,5,6,7,3,2,3,1};
 
-        System.out.println(Arrays.toString(s.bubbleSortMy(unsorted)));
+	    System.out.println(unsorted);
+
+        System.out.println(Arrays.toString(s.bubbleSortMyOptimised(sorted)));
     }
 
 
@@ -57,5 +59,81 @@ public class BubbleSort {
         System.out.println("Counter for optimised: " + counter);
         return unsorted;
     }
+
+	/**
+	 * This actually sorts, but it is not bubble sort.
+	 * @param unsorted
+	 * @return
+	 */
+	public static Integer[] afterSomeTime(Integer[] unsorted) {
+	    int counter = 0;
+
+	    for (int i = 0; i<unsorted.length-1; i++) {
+        	for (int j = i+1; j < unsorted.length; j++) {   // this looks like an alternative way, but it is not optimal for almost-sorted arrays
+		        counter++;
+		        if (unsorted[i] > unsorted[j]) {
+			        int temp = unsorted[j];
+			        unsorted[j] = unsorted[i];
+			        unsorted[i] = temp;
+		        }
+	        }
+        }
+	    System.out.println("Counter for MY_alternative: " + counter);
+	    return unsorted;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public Integer[] again(Integer[] unsorted) {
+		boolean swaped = true;
+
+		for (int i = 0; i < unsorted.length-1 && swaped; i++) {
+
+			for (int j = 0; j<unsorted.length-i-1; j++) {
+				swaped = false;
+
+				if (unsorted[j+1] < unsorted[j]) {
+					int temp = unsorted[j+1];
+					unsorted[j+1] = unsorted[j];
+					unsorted[j] = temp;
+					swaped = true;
+				}
+
+			}
+		}
+		return unsorted;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
