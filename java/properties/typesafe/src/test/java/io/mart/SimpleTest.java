@@ -41,4 +41,9 @@ public class SimpleTest {
     public void propertyWithDefault(){
         log.info("port: {}", defaultConfig.getInt("tomcat_port"));
     }
+
+    @Test
+    public void inherited() throws Exception {
+        log.info("pools.transactional.b: {}", fallbackConfig.getString("pools.transactional.b"));
+    }
 }
