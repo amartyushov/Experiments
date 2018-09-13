@@ -1,3 +1,6 @@
+Good books:
+http://exploringjs.com/ online book
+
 JIT compiler
 
 Rendering engine  
@@ -12,6 +15,25 @@ Javascript engine
 * null
 * undefined
 * NaN (not a number)
+
+```
+(any)  
+    (primitive value)  
+        undefined  
+        null  
+        boolean  
+        number  
+        string  
+        symbol  
+    (object)  
+        Object  
+            Array  
+            Function  
+            Map  
+            Set  
+            Date  
+            RegExp  
+```  
 
 All API and declared variables are stored in 'window' object  
 ~~  

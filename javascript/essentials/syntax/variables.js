@@ -1,3 +1,12 @@
+// let declares mutable variables.
+// const declares constants (immutable variables). Only binding is immutable (e.g. assigned obj value can be later changed)
+// Before ES6, there was also var. But it has several quirks, so it’s best to avoid it in modern JavaScript.
+
+// all variables are block scoped => can only be accessed from within the block that the are declared in
+
+
+
+
 var name = "Lavrence";
 name = 10;
 name = true;
@@ -10,13 +19,27 @@ const my_constant = "bla";
 // this is a contant and must be initialised
 //my_constant = 10; this is not allowed
 
-// ----------------------------
 
+
+// ----------------------------
+//coercion
 var z = 10 + "my" // will return '10my'
 var zz = 10 + 30 + "my" // will return '40my'
 var zzz = "my" + 10 + 30 // will return 'my1030' !!!!
 //The JavaScript compiler works from left to right.
 
+// Most operators only work with primitive values
+// If an operand is an object, it is usually coerced to a primitive value.
+// > [1,2,3] + [4,5,6]
+// '1,2,34,5,6'
+// Why? The plus operator first coerces its operands to primitive values:
+// > String([1,2,3])
+// '1,2,3'
+// > String([4,5,6])
+// '4,5,6'
+// Next, it concatenates the two strings:
+// > '1,2,3' + '4,5,6'
+// '1,2,34,5,6'
 
 
 var answer = "He is called 'Johnny'";    // Single quotes inside double quotes
@@ -31,11 +54,27 @@ document.getElementById("demo").innerHTML = "Hello " +
 
 
 
+// typeof & instanceof
+// typeof distinguishes the 7 types of the specification
+// instanceof tests which class created a given value
+/*
+typeof "John"                 // Returns "string"
+typeof Symbol                 // Returns "symbol"
+typeof 3.14                   // Returns "number"
+typeof NaN                    // Returns "number"
+typeof false                  // Returns "boolean"
+typeof [1,2,3,4]              // Returns "object"
+typeof {name:'John', age:34}  // Returns "object"
+typeof new Date()             // Returns "object"
+typeof function () {}         // Returns "function"     !!!!
+typeof myCar                  // Returns "undefined" *
+typeof null                   // Returns "object"       !!!!
+typeof undefined              // Returns "undefined"
 
-
-typeof ""           // will return 'string'
-typeof null         // will return 'object' Just remember!!!
-typeof [1,2,3,4]    // will return 'object' !!
+(function() {}) instanceof Function => true
+({}) instance Object => true
+[] instanceof Array => true
+*/
 
 // ----------------------------
 //Undefined and null are equal in value but different in type:
@@ -126,35 +165,84 @@ myNumber.toString(16);  // returns 20
 myNumber.toString(8);   // returns 40
 myNumber.toString(2);   // returns 100000
 
+let x; // mutable, ECMA6
+const z = 8; // immutable
 
 
 
 
+
+
+
+
+// Comma operator
 /*
-* In JavaScript there are 5 different data types that can contain values:
-string
-number
-boolean
-object
-function
+«left» , «right»
+The comma operator evaluates both operands and returns the result of right. Roughly, it does for expressions what the semicolon does for statements.
 
-There are 3 types of objects:
-Object
-Date
-Array
+This example demonstrates that the second operand becomes the result of the operator:
 
-And 2 data types that cannot contain values:
-null
+> 123, 'abc'
+'abc'
+This example demonstrates that both operands are evaluated:
+
+> var x = 0;
+> var y = (x++, 10);
+
+> x
+1
+> y
+10
+The comma operator is confusing. It’s better to not be clever and to write two separate statements whenever you can.
+ */
+
+// void operator http://speakingjs.com/es5/ch09.html#comma_operator
+/*
+The syntax for the void operator is:
+
+void «expr»
+which evaluates expr and returns undefined. Here are some examples:
+
+> void 0
+undefined
+> void (0)
 undefined
 
-typeof "John"                 // Returns "string"
-typeof 3.14                   // Returns "number"
-typeof NaN                    // Returns "number"
-typeof false                  // Returns "boolean"
-typeof [1,2,3,4]              // Returns "object"
-typeof {name:'John', age:34}  // Returns "object"
-typeof new Date()             // Returns "object"
-typeof function () {}         // Returns "function"
-typeof myCar                  // Returns "undefined" *
-typeof null                   // Returns "object"
-*/
+> void 4+7  // same as (void 4)+7
+NaN
+> void (4+7)
+undefined
+
+> var x;
+> x = 3
+3
+> void (x = 5)
+undefined
+> x
+5
+Thus, if you implement void as a function, it looks as follows:
+
+function myVoid(expr) {
+    return undefined;
+}
+The void operator is associated closely with its operand, so use parentheses as necessary. For example, void 4+7 binds as (void 4)+7.
+
+What is void used for?
+Under ECMAScript 5, void is rarely useful. Its main use cases are:
+
+void 0 as a synonym for undefined
+The latter can be changed, while the former will always have the correct value. However, undefined is reasonably safe from being changed under ECMAScript 5, which makes this use case less important (for details, see Changing undefined).
+Discarding the result of an expression
+In some situations, it is important to return undefined as opposed to the result of an expression. Then void can be used to discard that result. One such situation involves javascript: URLs, which should be avoided for links, but are useful for bookmarklets. When you visit one of those URLs, many browsers replace the current document with the result of evaluating the URL’s “content,” but only if the result isn’t undefined. Hence, if you want to open a new window without changing the currently displayed content, you can do the following:
+
+javascript:void window.open("http://example.com/")
+Prefixing an IIFE
+An IIFE must be parsed as an expression. One of several ways to ensure that is by prefixing it with void (see IIFE Variation: Prefix Operators).[11]
+Why does JavaScript have a void operator?
+According to JavaScript creator Brendan Eich, he added it to the language to help with javascript: links (one of the aforementioned use cases):
+
+I added the void operator to JS before Netscape 2 shipped to make it easy to discard any non-undefined value in a javascript: URL.[12]
+
+
+ */
+

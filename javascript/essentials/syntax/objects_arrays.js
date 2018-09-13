@@ -1,13 +1,55 @@
-var object_x = {firstName:"John", lastName:"Doe"}; // object
-var person = {
-    firstName:"John",
-    lastName:"Doe",
-    age:50,
-    eyeColor:"blue"
+//Object literal
+const obj = {
+    first: 'Jane'
 };
-//accessing
-person.eyeColor;
-person["age"];
+// obj is a reference, object itself is stored in the heap
+obj.foo = 'abc'; // add a property
+obj.foo = 'zzz'; // change a property
+
+// square brackets operator ([ ]) for accessing the properties of an object can only handle strings and symbols. All other values are coerced to string
+const obj10 = {};
+obj10['true'] = 123;
+// Coerce true to the string 'true'
+assert.equal(obj[true], 123);
+
+
+//Array literal
+const myArray = ['a'];
+
+
+
+// comparing of objects
+const myObject = {};
+assert.ok(myObject === myObject);
+assert.ok({} !== {}); // two fresh, different objects
+
+const a = {};
+const b = a;
+assert.ok(a === b); // b reference the same object
+a.foo = 'aaa'; // changing a also changing b
+
+// garbage collecting
+let obj2 = {prop: 'value'};
+obj2 = {};
+// now value 'prop' is a garbage. JS will automatically garbage-collect it at some point.
+
+
+
+//--------------------------------------------------------------------------
+// OBJECT LITERAL
+{
+    foo: bar(3, 5)
+}
+// created object has single property (foo) with a value as a result of function bar(3,5)
+// but it is also a code block that contains a single line: label foo followed by the function call bar(3,5)
+
+
+
+
+
+
+
+// OLD SCHOOL:
 
 //--------------------------------------------------------------------------
 // methods in functions
@@ -46,6 +88,28 @@ var z = new Number(500);
 // (x == y) is true because x and y have equal values
 // (x === y) is false because x and y have different types
 // (z == y) is false because objects cannot be compared
+
+/*
+Objects are coerced to primitives if (and only if!) the other operand is primitive:
+> [1, 2, 3] == '1,2,3'
+true
+> ['1', '2', '3'] == '1,2,3'
+true
+
+If both operands are objects, they are only equal if they are the same object:
+> [1, 2, 3] == ['1', '2', '3']
+false
+> [1, 2, 3] == [1, 2, 3]
+false
+ */
+
+
+
+
+
+
+
+
 
 
 //--------------------------------------------------------------------------
@@ -87,4 +151,3 @@ car instanceof Array;     // returns true
 // The Difference Between Arrays and Objects
 // In JavaScript, arrays use numbered indexes.
 //     In JavaScript, objects use named indexes.
-

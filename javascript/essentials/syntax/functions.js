@@ -15,3 +15,10 @@ document.getElementById("demo").innerHTML = toCelsius;
     - js code
     - automatically
 */
+
+// Arrow function expressions
+const add2 = (a,b) => a + b;
+assert.equal(add2(5,2), 7);
+
+const add3 = (a,b) => {return a + b}; // the body of add3 is code block
+

@@ -6,6 +6,28 @@ if (condition1) {
 } else {
 
 }
+/*
+if (x == 123) {
+  // x is either 123 or '123'
+}
+I prefer either of the following two alternatives:
+if (x === 123 || x === '123') ···
+if (Number(x) === 123) ···
+You can also convert x to a number when you first encounter it.
+ */
+
+/*
+Another use case for == is to check if a value x is either undefined or null:
+if (x == null) {
+  // x is either null or undefined
+}
+The problem with this code is that you can’t be sure if someone meant to write it that way or if they made a typo and meant === null.
+I prefer either of the following two alternatives:
+
+if (x === undefined || x === null) ···
+if (x) ···
+The second alternative is even more sloppy than using ==, but it is a well-established pattern in JavaScript
+ */
 
 
 
@@ -67,7 +89,12 @@ while (i < 10) {
     i++;
 }
 
+// If you want a loop to have an empty body, your first option is an empty statement (which is just a semicolon):
 
+while (processNextItem() > 0);
+// Your second option is an empty block:
+
+while (processNextItem() > 0) {}
 
 //-------------------------------------------------
 // DO/WHILE LOOP
