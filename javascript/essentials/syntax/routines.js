@@ -44,12 +44,17 @@ switch(expression) {
         // code block
 }
 //Switch cases use strict comparison (===).
+// do not forget to return or break
+
+
+
+
 
 
 
 //-------------------------------------------------
 // FOR LOOP
-for (i = 0; i < cars.length; i++) {
+for (let i = 0; i < cars.length; i++) {
     text += cars[i] + "<br>";
 }
 
@@ -68,16 +73,40 @@ for (; i < len; ) {
     text += cars[i] + "<br>"; i++;
 }
 
+// infinite loop
+for (;;) {
+}
+
+// for-of
+const iterable = ['hello', 'world'];
+for (const elem of iterable) {
+    // elem can be const, because it is just new declaration in fresh loop
+}
 
 
-//-------------------------------------------------
-// FOR/IN LOOP
+// Iterating over [index, element] pairs of Arrays
+const arr5 = ['a', 'b', 'c'];
+for (const [index, elem] of arr5.entries()) {
+    console.log(`${index} -> ${elem}`);
+}
+
+
+// for-await-of (can only be used inside async functions and async generators.)
+for await (const item of asyncIterable) {
+    // ···
+}
+
+
+// FOR/IN LOOP (it is usually best to avoid it)
 var person = {fname:"John", lname:"Doe", age:25};
 // iterate through the properties of object
 var text = ""; var x;
 for (x in person) {
     text += person[x];
 }
+
+
+
 
 
 
@@ -106,9 +135,6 @@ while (condition);
 
 
 // The break statement breaks the loop and continues executing the code after the loop (if any)
-// The continue statement breaks one iteration (in the loop), if a specified condition occurs,
-// and continues with the next iteration in the loop.
-
 // With a label reference, the break statement can be used to jump out of any code block:
 var cars = ["BMW", "Volvo", "Saab", "Ford"];
 list: {
@@ -119,5 +145,29 @@ list: {
     text += cars[5] + "<br>";
 }
 // A code block is a block of code between { and }.
+// good example of break with label statement
+function search(stringArray, suffix) {
+    let result;
+    search_block: {
+        for (const str of stringArray) {
+            if (str.endsWith(suffix)) {
+                // Success
+                result = str;
+                break search_block; // exits the block code which is labeled as search_block
+            }
+        } // for
+        // Failure
+        result = '(Untitled)';
+    } // search_block
+
+    return { suffix, result };
+    // same as: {suffix: suffix, result: result}
+}
 
 
+
+
+
+
+// CONTINUE
+// It immediately leaves the current loop iteration and continues with the next one.

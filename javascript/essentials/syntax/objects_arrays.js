@@ -48,7 +48,6 @@ obj2 = {};
 
 
 
-
 // OLD SCHOOL:
 
 //--------------------------------------------------------------------------
@@ -150,4 +149,4 @@ car instanceof Array;     // returns true
 
 // The Difference Between Arrays and Objects
 // In JavaScript, arrays use numbered indexes.
-//     In JavaScript, objects use named indexes.
+// In JavaScript, objects use named indexes.

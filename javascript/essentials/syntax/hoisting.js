@@ -51,3 +51,7 @@ function myFunction() {
 //------------------
 
 //Strict mode makes it easier to write "secure" JavaScript.
+
+// Function declarations are hoisted (internally moved to the top)
+// Variable declarations are not hoisted – you can only use their variables after they were declared:
+// Class declarations are not hoisted

@@ -175,6 +175,7 @@ const z = 8; // immutable
 
 
 
+// =========================================================================================
 // Comma operator
 /*
 «left» , «right»
@@ -196,6 +197,9 @@ This example demonstrates that both operands are evaluated:
 The comma operator is confusing. It’s better to not be clever and to write two separate statements whenever you can.
  */
 
+
+
+// =========================================================================================
 // void operator http://speakingjs.com/es5/ch09.html#comma_operator
 /*
 The syntax for the void operator is:
@@ -242,7 +246,55 @@ Why does JavaScript have a void operator?
 According to JavaScript creator Brendan Eich, he added it to the language to help with javascript: links (one of the aforementioned use cases):
 
 I added the void operator to JS before Netscape 2 shipped to make it easy to discard any non-undefined value in a javascript: URL.[12]
-
-
  */
 
+
+
+// =========================================================================================
+// null and undefined
+
+let myVar;
+// assert.equal(myVar, undefined);
+
+function func(x) {
+    return x;
+}
+// assert.equal(func(), undefined);
+
+const obj33 = {};
+// assert.equal(obj33.unknownProp, undefined);
+
+function func14() {}
+//assert.equal(func14(), undefined);
+// If you don’t explicitly specify the result of a function via the return operator, JavaScript returns undefined for you
+
+/*
+Checking for undefined or null
+Checking for either:
+
+if (x === null) ···
+if (x === undefined) ···
+Does x have a value?
+
+if (x !== undefined && x !== null) {
+  // ···
+}
+if (x) { // truthy?
+  // x is neither: undefined, null, false, 0, NaN, ''
+}
+Is x either undefined or null?
+
+if (x === undefined || x === null) {
+  // ···
+}
+if (!x) { // falsy?
+  // x is: undefined, null, false, 0, NaN, ''
+}
+Truthy means “is true if coerced to boolean”. Falsy means “is false if coerced to boolean”. Both concepts are explained properly in the chapter on booleans).
+ */
+
+//undefined and null don’t have properties
+
+
+// =========================================================================================
+// BOOLEAN
