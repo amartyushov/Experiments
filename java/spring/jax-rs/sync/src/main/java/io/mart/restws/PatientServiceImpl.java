@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
@@ -40,6 +42,10 @@ public class PatientServiceImpl implements PatientService {
 //	http://localhost:8080/restws/services/patientService/patients/123
 	@Override
 	public Patient getPatient(Long id) {
+		if (patients.get(id) == null) {
+//			throw new WebApplicationException(Response.Status.NOT_FOUND);
+			throw new NotFoundException(); // technically same as above
+		}
 		return patients.get(id);
 	}
 	
@@ -60,7 +66,7 @@ public class PatientServiceImpl implements PatientService {
 			patients.put(patient.getId(), patient);
 			response = Response.ok().build();
 		} else {
-			response = Response.notModified().build();
+			throw new PatientBusinessException();
 		}
 		return response;
 	}
