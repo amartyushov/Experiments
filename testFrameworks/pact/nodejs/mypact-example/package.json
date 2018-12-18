@@ -1,0 +1,28 @@
+{
+  "name": "mypact-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@pact-foundation/pact": "^7.0.3",
+    "axios": "^0.18.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.16.4",
+    "mocha": "^5.2.0",
+    "pact": "^4.3.2",
+    "path": "^0.12.7",
+    "sinon": "^7.1.1",
+    "sinon-chai": "^3.2.0",
+    "superagent": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "pact:broker": "docker run -d -p 8080:80 risingstack/pact_broker_example",
+    "test:consumer": "./node_modules/.bin/mocha --timeout 10000 client/test/client.spec.js",
+    "run:provider": "node server/server.js",
+    "run:consumer": "node client/Consumer.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

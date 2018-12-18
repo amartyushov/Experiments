@@ -13,10 +13,8 @@ public class BubbleSort {
         Integer[] sorted = new Integer[]{5,6,1,2,3,4};
         Integer[] semisorted = new Integer[]{4,2,3,1};
         Integer[] big = new Integer[]{4,1,5,6,7,3,2,3,1};
-
-	    System.out.println(unsorted);
-
-        System.out.println(Arrays.toString(s.bubbleSortMyOptimised(sorted)));
+        
+        System.out.println(Arrays.toString(s.bubbleSortMy(big)));
     }
 
 
@@ -81,42 +79,36 @@ public class BubbleSort {
 	    System.out.println("Counter for MY_alternative: " + counter);
 	    return unsorted;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public Integer[] again(Integer[] unsorted) {
-		boolean swaped = true;
-
-		for (int i = 0; i < unsorted.length-1 && swaped; i++) {
-
-			for (int j = 0; j<unsorted.length-i-1; j++) {
-				swaped = false;
-
-				if (unsorted[j+1] < unsorted[j]) {
-					int temp = unsorted[j+1];
-					unsorted[j+1] = unsorted[j];
+    
+    
+    
+    
+    public static Integer[] yetAnotherImpl(Integer[] unsorted) {
+		int counter = 0;
+		boolean swapped = true;
+		for (int i = 0; i < unsorted.length && swapped; i++) {
+			
+			for (int j = 1; j < unsorted.length-i; j++) {
+				counter++;
+				swapped = false;
+				if (unsorted[j-1] > unsorted[j]) {
+					
+					Integer temp = unsorted[j-1];
+					unsorted[j-1] = unsorted[j];
 					unsorted[j] = temp;
-					swaped = true;
+					swapped = true;
 				}
-
 			}
 		}
+		System.out.println("Counter for My implemetation: " + counter);
 		return unsorted;
-    }
-
-
-
+		
+		
+	}
+    
+    
+    
+    
 
 
 

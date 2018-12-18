@@ -1,0 +1,31 @@
+{
+  "consumer": {
+    "name": "Consumer"
+  },
+  "provider": {
+    "name": "Provider"
+  },
+  "interactions": [
+    {
+      "description": "a request for JSON data",
+      "request": {
+        "method": "GET",
+        "path": "/name"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "title": "myTitle",
+          "count": 4
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

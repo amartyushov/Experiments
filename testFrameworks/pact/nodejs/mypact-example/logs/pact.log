@@ -1,0 +1,50 @@
+I, [2018-11-20T14:47:42.429353 #33374]  INFO -- : Registered expected interaction GET /name
+D, [2018-11-20T14:47:42.429593 #33374] DEBUG -- : {
+  "description": "a request for JSON data",
+  "request": {
+    "method": "GET",
+    "path": "/name"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "title": "myTitle",
+      "count": 4
+    }
+  }
+}
+W, [2018-11-20T14:47:42.469203 #33374]  WARN -- : Verifying - actual interactions do not match expected interactions. 
+Missing requests:
+	GET /name
+
+
+I, [2018-11-20T14:47:42.470845 #33374]  INFO -- : Received request GET /name
+W, [2018-11-20T14:47:42.470891 #33374]  WARN -- : Missing requests:
+	GET /name
+
+
+D, [2018-11-20T14:47:42.471007 #33374] DEBUG -- : {
+  "path": "/name",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Host": "localhost:3333",
+    "Accept": "application/json",
+    "Connection": "close",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2018-11-20T14:47:42.471448 #33374]  INFO -- : Found matching response for GET /name
+D, [2018-11-20T14:47:42.471636 #33374] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "title": "myTitle",
+    "count": 4
+  }
+}
+I, [2018-11-20T14:47:42.480974 #33374]  INFO -- : Cleared interactions
+I, [2018-11-20T14:47:42.487540 #33374]  INFO -- : Writing pact for Provider to /Users/aleksandr.m/work/Experiments/testFrameworks/pact/nodejs/mypact-example/pacts/consumer-provider.json

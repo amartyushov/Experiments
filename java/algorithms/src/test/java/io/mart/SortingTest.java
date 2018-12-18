@@ -16,8 +16,8 @@ import static org.testng.Assert.assertTrue;
 
 public class SortingTest {
 
-    private Class classWithAlg = SelectionSort.class;
-    private String methodName = "again";
+    private Class classWithAlg = BubbleSort.class;
+    private String methodName = "yetAnotherAttempt";
     private Method method = null;
 
     @BeforeClass
