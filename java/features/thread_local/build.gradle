@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+dependencies {
+	testCompile 'org.slf4j:slf4j-log4j12:1.7.25'
+}
+test.useTestNG()
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1'
+} //gradle wrapper

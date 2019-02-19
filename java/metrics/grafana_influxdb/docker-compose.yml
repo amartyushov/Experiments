@@ -1,0 +1,42 @@
+version: "2.1"
+
+services:
+
+  influxdb:
+    image: influxdb:1.6.3
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DATA_QUERY_LOG_ENABLED=false
+      - INFLUXDB_HTTP_AUTH_ENABLED=false
+      - INFLUXDB_HTTP_LOG_ENABLED=false
+      - INFLUXDB_REPORTING_DISABLED=true
+    volumes:
+      - ./influxdb/:/var/lib/influxdb
+    networks:
+      - my-net
+
+
+  grafana:
+    image: grafana/grafana:5.4.2
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource
+      - GF_SECURITY_DISABLE_GRAVATAR=true
+      - GF_SERVER_DOMAIN=localhost:3000
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+      - GF_USERS_ALLOW_SIGN_UP=false
+    depends_on:
+      - influxdb
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+#      - ./grafana/dashboards:/var/lib/grafana/dashboards
+#      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+#      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+#      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      - my-net
+
+networks:
+  my-net:
