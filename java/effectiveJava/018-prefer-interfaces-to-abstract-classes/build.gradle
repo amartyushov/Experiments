@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+dependencies {
+	compile 'org.apache.logging.log4j:log4j-api:2.11.2'
+	compile 'org.apache.logging.log4j:log4j-core:2.11.2'
+}
