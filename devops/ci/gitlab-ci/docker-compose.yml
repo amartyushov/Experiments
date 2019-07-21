@@ -4,22 +4,22 @@ services:
     image: 'gitlab/gitlab-ce'
     container_name: 'gitlab'
     restart: always
-    hostname: {host_ip}
+    hostname: localhost
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://{host_ip}:9090'
+        external_url 'http://localhost:30080'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     networks:
       - gitlab-network
     ports:
       - '80:80'
       - '443:443'
-      - '9090:9090'
+      - '30080:30080'
       - '2224:22'
     volumes:
-      - '/srv/gitlab/config:/etc/gitlab'
-      - '/srv/gitlab/logs:/var/log/gitlab'
-      - '/srv/gitlab/data:/var/opt/gitlab'
+      - './config:/etc/gitlab'
+      - './logs:/var/log/gitlab'
+      - './data:/var/opt/gitlab'
 
 networks:
   gitlab-network:

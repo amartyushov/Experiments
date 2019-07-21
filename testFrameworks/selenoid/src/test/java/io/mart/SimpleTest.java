@@ -18,7 +18,7 @@ public class SimpleTest {
 	@Test
 	public void testMethod() throws InterruptedException, MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setBrowserName("chrome");
+		capabilities.setBrowserName("firefox");
 		capabilities.setVersion("66.0");
 		capabilities.setCapability("enableVNC", true);
 //		capabilities.setCapability("enableVideo", true);
@@ -27,7 +27,7 @@ public class SimpleTest {
 
 
 		RemoteWebDriver driver = new RemoteWebDriver(
-				URI.create("http://localhost:4444/wd/hub").toURL(),
+				URI.create("http://172.16.9.235:4446/wd/hub").toURL(),
 				capabilities
 		);
 
@@ -36,7 +36,7 @@ public class SimpleTest {
 		WebElement element = driver.findElement(By.name("q"));
 		element.sendKeys("Cheese!");
 		element.submit();
-		Thread.sleep(100000);
+		Thread.sleep(10000);
 
 		System.out.println("Page title is: " + driver.getTitle());
 		(new WebDriverWait(driver, 10)).until(
