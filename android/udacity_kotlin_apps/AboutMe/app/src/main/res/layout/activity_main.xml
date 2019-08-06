@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Declare a variable by specifying a name and a data type. -->
+        <!-- Use fully qualified name for the type. -->
+        <variable
+                name="myName"
+                type="com.example.aboutme.MyName" />
+    </data>
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+        <TextView
+                android:text="@={myName.name}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name_text"
+                android:textAlignment="center"
+                style="@style/TheStyleName"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/nickname_text_id"
+                style="@style/TheStyleName"
+                android:hint="@string/what_is_your_nickname"/>
+        <Button
+                android:text="@string/nickname_done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/edit_button"/>
+        <TextView
+                android:text="@={myName.nickname}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/nickname_text_result" android:visibility="gone"
+                style="@style/TheStyleName"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@android:drawable/btn_star_big_on"
+                android:id="@+id/imageView" android:contentDescription="@string/yellow_star"
+                android:textSize="@dimen/text_font" android:padding="@dimen/text_padding"
+                android:layout_marginTop="@dimen/layout_margin" android:fontFamily="@font/roboto"
+                android:textColor="@android:color/black" android:layout_gravity="center_horizontal"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="@string/bio_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    style="@style/TheStyleName"
+                    android:lineSpacingMultiplier="1.2"/>
+        </ScrollView>
+    </LinearLayout>
+</layout>

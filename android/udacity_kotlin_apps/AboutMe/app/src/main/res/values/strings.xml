@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">AboutMe</string>
+    <string name="aleksandr_mart">Aleksandr Mart</string>
+    <string name="yellow_star">The yellow star</string>
+    <string name="bio_text">TextView</string>
+    <string name="bio_data">What is Feedback?
+        A 360 degree feedback is a method that provides every employee with an opportunity to receive performance feedback from stakeholders; these are people you actively work with on an everyday basis at various levels. In our context, the stakeholders are People Leads, Functional Leads, Peers and Self.
+
+        Why are we introducing a Feedback?
+        To have a transparent, data-based approach to mid-year and annual appraisals in the future
+        To understand how your team members perceive your efforts and how to better collaborate in the future
+        To use the data and gain insights on strengths and areas of improvement of every team member
+        To use the data for goal-setting and creating an individual progression plan
+        Why is it driven by the People Leads?
+        A People Lead is your supervisor who manages your employment life cycle: hiring, onboarding,  conversations, indidvidual performance plan, career path discussions, performance appraisal, promotion or salary negotiation and moral support. Therefore, mid-year appraisals are an initiative driven by the People Leads to provide you with the best possible support for your career progression through feedback from various stakeholders and yourself.
+
+        We will not have a People Lead feedback for this Mid-Year Appraisal since a team of People Leads was only formed two months ago and it is not enough time to actively provide feedback on activities of the past 6 months.
+
+        Who are the current stakeholders who will give feedback?
+        Functional Leads
+        A Functional Lead acts as the primary source and coach for building technical capability of every team member. Therefore, wherever required and possible, the corresponding Functional Lead will provide feedback in regards to your technical skills, performance and progression. Since your Functional Lead has already been assigned and cannot be nominated, you can find their name against yours in the Feedback Circle Overview.
+
+        Exception
+
+        Some roles (Product Owner, Designer, Front End Lead, Tech Lead and few Front End Engineers) do not yet have a Functional Lead. In this case we have proposed several stakeholders, who we believe would be a sufficient substitute for this round of 360° feedback. If you have any questions about this or alternative suggestions, please approach your People Lead.
+
+        Nominated Peers
+        In addition to the Functional Leads, each person nominates two colleagues; this forms the basis for your peer-feedback. Think about who you have worked closely with over the past few weeks or months and could give you insightful, valuable and good-quality feedback.
+
+        Self
+        Every team member has the chance to provide feedback for themselves.This is an opportunity to reflect on oneself and understand their own strengths and areas of development. For further information see 1. Self-Reflection or speak to your People Lead.
+
+        Feedback Format and Guidelines
+        Appreciative Feedback
+        Give one specific example on something great the other person is currently doing and could continue doing or even do more of.
+
+        Constructive Feedback
+        Give one specific example on something the other person could work on as part of their progression and personal development.
+
+        When giving feedback, please refer to our Signavio Feedback Guidelines and values.
+
+        Data Privacy Confidentiality
+        Feedback gathered will only be shared with the person who requested the feedback from the nominees and the People Leads. Please note that the feedback itself will not be anonymous, meaning that the feedback receiver will know who has given which feedback. This is done with the intention to encourage an open feedback culture, be transparent and to give the opportunity to follow up and act on the feedback received. The results of the feedback as well as the documented outcome of the Mid-Year Appraisal will be shared with you and uploaded to Bamboo HR to your employee file.The People Leads will treat all information gathered with confidentiality.
+
+
+    </string>
+    <string name="what_is_your_nickname">What is your nickname?</string>
+    <string name="nickname_done_button">Done</string>
+    <string name="nickname_text_field">Nickname resulting</string>
+</resources>
