@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+dependencies {
+	compile 'org.apache.logging.log4j:log4j-api:2.11.2'
+	compile 'org.apache.logging.log4j:log4j-core:2.11.2'
+
+	compile group: 'org.infinispan', name: 'infinispan-core', version: '9.2.0.Final'
+	compile ( group: 'org.infinispan',                     name: 'infinispan-cachestore-jdbc',    version:'9.2.0.Final' ) {
+		exclude group: 'org.jboss.slf4j'
+		exclude group: 'slf4j-logging'
+		exclude group: 'org.infinispan', module: 'infinispan-core'
+	}
+
+	compile group: 'org.testcontainers',            name: 'mysql',                          version: '1.11.3'
+	compile group: 'mysql',                 name: 'mysql-connector-java',           version: "5.1.47"
+
+}
