@@ -13,3 +13,6 @@ There is a possibility to jump immediately to the source code of this diagram an
 By substituting `png` -> `uml` in the browser link.  
 Do not forget that after change of the sources in browser it is necessary to update a permanent link to the diagram.
 
+- useful plantuml resources  
+https://github.com/tupadr3/plantuml-icon-font-sprites  
+https://github.com/Roemer/plantuml-office
