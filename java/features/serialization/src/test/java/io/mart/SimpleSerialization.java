@@ -1,11 +1,8 @@
 package io.mart;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
+import io.mart.family.Son;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,10 +18,10 @@ public class SimpleSerialization {
 		user.setHeight(180);
 		
 		String fileName = "theFile.txt";
-		writeObjectToFile(user, fileName);
+		SerializationUtils.writeObjectToFile(user, fileName);
 		
 		// Act
-		Object object = readObjectFromFile(fileName);
+		Object object = SerializationUtils.readObjectFromFile(fileName);
 		User deserializedUser = (User) object;
 		
 		// Assert
@@ -35,24 +32,22 @@ public class SimpleSerialization {
 	}
 	
 	
-	private Object readObjectFromFile(String fileName) throws IOException, ClassNotFoundException {
-		FileInputStream fileInputStream
-				= new FileInputStream(fileName);
-		ObjectInputStream objectInputStream
-				= new ObjectInputStream(fileInputStream);
-		Object object = objectInputStream.readObject();
-		objectInputStream.close();
-		return object;
-	}
-	
-	
-	private void writeObjectToFile(User user, String fileName) throws IOException {
-		FileOutputStream fileOutputStream
-				= new FileOutputStream(fileName);
-		ObjectOutputStream objectOutputStream
-				= new ObjectOutputStream(fileOutputStream);
-		objectOutputStream.writeObject(user);
-		objectOutputStream.flush();
-		objectOutputStream.close();
+	@Test
+	public void childOfSerializableObject_canBeSerializedAndDeserialized() throws IOException, ClassNotFoundException {
+		// Arrange
+		Son son = new Son();
+		son.setName("theName");
+		son.setAge(20);
+		
+		String fileName = "theFile.txt";
+		SerializationUtils.writeObjectToFile(son, fileName);
+		
+		// Act
+		Object object = SerializationUtils.readObjectFromFile(fileName);
+		Son deserializedSon = (Son) object;
+		
+		// Assert
+		assertThat(deserializedSon.getAge()).isEqualTo(son.getAge());
+		assertThat(deserializedSon.getName()).isEqualTo(son.getName());
 	}
 }

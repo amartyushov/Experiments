@@ -19,11 +19,6 @@ public class User implements Serializable {
 	transient int height;
 	
 	
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
-	
-	
 	public static String getAddress() {
 		return address;
 	}
