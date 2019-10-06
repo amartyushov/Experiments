@@ -30,24 +30,4 @@ public class SimpleSerialization {
 		
 		assertThat(deserializedUser.getHeight()).isNotEqualTo(user.getHeight());
 	}
-	
-	
-	@Test
-	public void childOfSerializableObject_canBeSerializedAndDeserialized() throws IOException, ClassNotFoundException {
-		// Arrange
-		Son son = new Son();
-		son.setName("theName");
-		son.setAge(20);
-		
-		String fileName = "theFile.txt";
-		SerializationUtils.writeObjectToFile(son, fileName);
-		
-		// Act
-		Object object = SerializationUtils.readObjectFromFile(fileName);
-		Son deserializedSon = (Son) object;
-		
-		// Assert
-		assertThat(deserializedSon.getAge()).isEqualTo(son.getAge());
-		assertThat(deserializedSon.getName()).isEqualTo(son.getName());
-	}
 }
