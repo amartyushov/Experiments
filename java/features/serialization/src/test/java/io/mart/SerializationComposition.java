@@ -11,7 +11,6 @@ import io.mart.composition.Subclass;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class SerializationComposition {
@@ -46,19 +45,42 @@ public class SerializationComposition {
 		assertThat(thrown).isInstanceOf(NotSerializableException.class);
 	}
 	
+	@Test
+	public void whenNonSerializableField_isNotSet_noException() throws IOException, ClassNotFoundException {
+	    // Arrange
+		Subclass subclass = prepareSubclassWithoutNonSerializableField();
+	    
+	    // Act
+		String fileName = "anyName.txt";
+		SerializationUtils.writeObjectToFile(subclass, fileName);
+		Object object = SerializationUtils.readObjectFromFile(fileName);
+		
+		Subclass deserializedSubClass = (Subclass) object;
+		
+		// Assert
+		assertThat(subclass.getCar().getModel()).isEqualTo(deserializedSubClass.getCar().getModel());
+		assertThat(subclass.getHouse().getSquare()).isEqualTo(deserializedSubClass.getHouse().getSquare());
+	}
 	
-	private Subclass prepareSubclass() {
+	
+	private Subclass prepareSubclassWithoutNonSerializableField() {
 		Subclass subclass = new Subclass();
 		Car car = new Car();
 		car.setModel("theModel");
 		House house = new House();
 		house.setSquare(100);
-		Forest forest = new Forest();
-		forest.setColor("theColor");
 		subclass.setCar(car);
 		subclass.setHouse(house);
-		subclass.setForest(forest);
 		return subclass;
+	}
+	
+	
+	private Subclass prepareSubclass() {
+		Subclass sub = prepareSubclassWithoutNonSerializableField();
+		Forest forest = new Forest();
+		forest.setColor("theColor");
+		sub.setForest(forest);
+		return sub;
 	}
 	
 	

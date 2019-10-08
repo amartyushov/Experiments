@@ -19,12 +19,12 @@ public class SerializationUtils {
 	}
 	
 	
-	static void writeObjectToFile(Object user, String fileName) throws IOException {
+	static void writeObjectToFile(Object object, String fileName) throws IOException {
 		FileOutputStream fileOutputStream
 				= new FileOutputStream(fileName);
 		ObjectOutputStream objectOutputStream
 				= new ObjectOutputStream(fileOutputStream);
-		objectOutputStream.writeObject(user);
+		objectOutputStream.writeObject(object);
 		objectOutputStream.flush();
 		objectOutputStream.close();
 	}
