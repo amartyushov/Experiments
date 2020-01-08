@@ -13,9 +13,13 @@ public class BasicTest {
 
 	@Test
 	public void testMethod() {
+		System.setProperty("webdriver.chrome.logfile", "webdriver.log");
+		System.setProperty("webdriver.chrome.verboseLogging", "true");
+		
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("http://www.google.com");
+		driver.getTitle();
 		WebElement element = driver.findElement(By.name("q"));
 		element.sendKeys("Cheese!");
 		element.submit();

@@ -9,6 +9,6 @@ dependencies {
 	testCompile 'org.testng:testng:6.10'
 	testCompile 'org.projectlombok:lombok:1.16.20' // IDEA -> enable annotation processing
 
-	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.12.0'
+	testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
 }
 test.useTestNG()
