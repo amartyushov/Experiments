@@ -2,7 +2,7 @@ package io.mart;
 
 public class IsBraceSequencedCorrectRecursion {
 	
-	private static int n = 3;
+	private static int n = 2;
 	static char[] s = new char[2*n];
 	
 	public static void main(String[] args) {
