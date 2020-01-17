@@ -1,0 +1,6 @@
+@startuml
+
+Server_response -> [Client] : ClientResponseFilter (chain)
+HTTP_call <-left- [Client] : ClientRequestFilter (chain)
+
+@enduml
