@@ -10,7 +10,7 @@ import com.google.inject.Singleton;
 public class PostService implements Service {
 
     public boolean sendMessage() {
-        System.out.println("Message is sent by post");
+        System.out.println("Message is sent by post (annotated)");
         return true;
     }
 }

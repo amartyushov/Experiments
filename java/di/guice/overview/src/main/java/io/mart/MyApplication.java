@@ -1,7 +1,8 @@
 package io.mart;
 
+import javax.inject.Named;
+
 import com.google.inject.Inject;
-import com.google.inject.name.Named;
 import io.mart.services.Service;
 
 /**
@@ -11,17 +12,17 @@ public class MyApplication {
 
     private Service service;
 
-/*    // constructor based injection
+    // constructor based injection
     @Inject
-    public MyApplication(Service service) {
+    public MyApplication(@Named("post") Service service) {
         this.service=service;
-    }*/
+    }
 
     // setter based injection
-    @Inject
-    public void setService(Service service){
-        this.service = service;
-    }
+//    @Inject
+//    public void setService(Service service){
+//        this.service = service;
+//    }
 
 /*
     @Inject

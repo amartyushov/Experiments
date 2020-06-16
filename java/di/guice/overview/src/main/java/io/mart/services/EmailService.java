@@ -10,7 +10,7 @@ import com.google.inject.Singleton;
 public class EmailService implements Service {
 
     public boolean sendMessage() {
-        System.out.println("Message is sent by email");
+        System.out.println("Message is sent by email (binding without named annotation)");
         return true;
     }
 }
