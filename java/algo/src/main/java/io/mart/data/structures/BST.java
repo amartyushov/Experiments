@@ -10,7 +10,7 @@ public class BST {
 			this.data = data;
 		}
 		
-		public void insert (int value) {
+		public void insert(int value) {
 			if (value <= data) {
 				if (left == null) {
 					left = new Node(value);
