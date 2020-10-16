@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-class Amazon_151020_SDET {
+class Nozama_151020_SDET {
 	
 	/*
 	 * Complete the 'fiveStarReviews' function below.
@@ -74,7 +74,7 @@ class Amazon_151020_SDET {
 		productRatings.add(Arrays.asList(4,4));
 		productRatings.add(Arrays.asList(1,2));
 		productRatings.add(Arrays.asList(3,6));
-		Amazon_151020_SDET.fiveStarReviews(productRatings, 77);
+		Nozama_151020_SDET.fiveStarReviews(productRatings, 77);
 		
 	}
 	
