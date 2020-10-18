@@ -1,4 +1,4 @@
-package io.mart.vlcup.qualification;
+package io.mart.contest.vkcup.qualification;
 
 import java.util.ArrayList;
 import java.util.List;

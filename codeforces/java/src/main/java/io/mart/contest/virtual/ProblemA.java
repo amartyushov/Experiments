@@ -1,4 +1,4 @@
-package io.mart.virtual;
+package io.mart.contest.virtual;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,11 +1,11 @@
-package io.mart.round.six.zero.five;
+package io.mart.contest.round605;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ProblemA {
+public class ProblemASecond {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -19,20 +19,22 @@ public class ProblemA {
 			Integer first = list.get(0);
 			Integer second = list.get(1);
 			Integer third = list.get(2);
-			Integer min = Integer.MAX_VALUE;
-		
-			for (int k = -1; k <= 1; k++) {
-				for (int l = -1; l <= 1; l++) {
-					for (int r = -1; r <= 1; r++) {
-						Integer f = first + k;
-						Integer s = second + l;
-						Integer t = third + r;
-						Integer result = Math.abs(f - s) + Math.abs(f - t) + Math.abs(s - t);
-						min = Math.min(min, result);
-					}
-				}
+			
+			Integer firstL = first + 1;
+			Integer secondL = second;
+			Integer thirdL = third - 1;
+			
+			if (first.equals(second) && second.equals(third)) {
+				firstL = first;
+				secondL = second;
+				thirdL = third;
+			} else if (first.equals(second)) {
+				secondL = second + 1;
+			} else if (second.equals(third)) {
+				secondL = second - 1;
 			}
-			System.out.println(min);
+			
+			System.out.println(Math.abs(firstL - secondL) + Math.abs(firstL - thirdL) + Math.abs(secondL - thirdL));
 		}
 	}
 }

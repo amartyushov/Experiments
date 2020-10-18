@@ -1,15 +1,8 @@
-package io.mart.virtual;
+package io.mart.contest.virtual;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public class ProblemC {
 	

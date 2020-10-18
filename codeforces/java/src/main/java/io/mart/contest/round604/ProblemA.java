@@ -1,4 +1,4 @@
-package io.mart.round.six.zero.four;
+package io.mart.contest.round604;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

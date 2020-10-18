@@ -1,4 +1,4 @@
-package io.mart.round.six.zero.five;
+package io.mart.contest.round605;
 
 import java.util.List;
 import java.util.Scanner;
