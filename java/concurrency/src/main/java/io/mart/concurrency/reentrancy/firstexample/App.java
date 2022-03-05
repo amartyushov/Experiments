@@ -1,4 +1,4 @@
-package io.mart.concurrency.reentrancy;
+package io.mart.concurrency.reentrancy.firstexample;
 
 /**
  * @author Alexander Martyushov

@@ -1,4 +1,4 @@
-package io.mart.concurrency.reentrancy;
+package io.mart.concurrency.reentrancy.firstexample;
 
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
