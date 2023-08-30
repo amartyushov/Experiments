@@ -113,6 +113,7 @@ public class LinkedList {
 			System.out.print(currentNode.data + " ");
 			currentNode = currentNode.next;
 		}
+		System.out.println();
 	}
 	
 	static class Node {
@@ -122,15 +123,89 @@ public class LinkedList {
 		Node(int value) { data = value; }
 	}
 	
+	/**
+	 * <a href="https://www.geeksforgeeks.org/rotate-a-linked-list/">source</a>
+	 * Input: linked list = 10->20->30->40->50->60, k = 4
+	 * Output: 50->60->10->20->30->40.
+	 * Explanation: k is smaller than the count of nodes in a linked list so (k+1 )th node i.e. 50 becomes the head node and 60’s next points to 10
+	 */
+	public static LinkedList rotateCounterClockwise(LinkedList list, int k) {
+		if (list.head == null) {
+			System.out.println("List is empty");
+			return list;
+		}
+		if (k == 0) return list;
+		
+		// Let us understand the below code for example k =
+		// 4 and list = 10->20->30->40->50->60.
+		Node currentNode = list.head;
+		
+		int counter = 1;
+		// current will either point to kth or NULL after
+		// this loop. current will point to node 40 in the
+		// above example
+		while (currentNode != null && counter < k) {
+			currentNode = currentNode.next;
+			counter++;
+		}
+		
+		// If current is NULL, k is greater than or equal to
+		// count of nodes in linked list. Don't change the
+		// list in this case
+		if (currentNode == null) {
+			System.out.println(k + " is bigger than list size");
+			return list;
+		}
+		
+		// current points to kth node. Store it in a
+		// variable. kthNode points to node 40 in the above example
+		Node kNode = currentNode;
+		
+		// current will point to last node after this loop
+		// current will point to node 60 in the above
+		// example
+		while (currentNode.next != null) {
+			currentNode = currentNode.next;
+		}
+		
+		// Change next of last node to previous head
+		// Next of 60 is now changed to node 10
+		currentNode.next = list.head;
+		
+		// Change head to (k+1)th node
+		// head is now changed to node 50
+		list.head = kNode.next;
+		
+		// change next of kth node to null
+		kNode.next = null;
+		return list;
+	}
+	
+	
 	// Driver code
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		for (int i = 1; i < 9; i++) {
 			list = insertToTail(list, i);
 		}
-		
-		deleteAtPosition(list, 7);
 		printList(list);
+		deleteNode(list, 5);
+		printList(list);
+		deleteNode(list, 1);
+		printList(list);
+		
+		LinkedList list2 = new LinkedList();
+		list2 = insertToTail(list2, 1);
+		printList(list2);
+		
+//		deleteAtPosition(list, 7);
+		System.out.println("==== before rotation");
+		LinkedList list3 = new LinkedList();
+		for (int i = 1; i < 9; i++) {
+			list = insertToTail(list3, i);
+		}
+		printList(list3);
+		rotateCounterClockwise(list3, 4);
+		printList(list3);
 	}
 }
