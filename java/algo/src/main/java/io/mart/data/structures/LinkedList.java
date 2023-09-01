@@ -181,8 +181,22 @@ public class LinkedList {
 		return list;
 	}
 	
+	public static LinkedList reverseList(LinkedList list) {
+		Node current = list.head;
+		Node previous = null;
+		
+		while (current != null) {
+			Node nextNode = current.next;
+			
+			current.next = previous;
+			
+			previous = current;
+			current = nextNode;
+		}
+		list.head = previous;
+		return list;
+	}
 	
-	// Driver code
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
 		for (int i = 1; i < 9; i++) {
@@ -198,11 +212,10 @@ public class LinkedList {
 		list2 = insertToTail(list2, 1);
 		printList(list2);
 		
-//		deleteAtPosition(list, 7);
 		System.out.println("==== before rotation");
 		LinkedList list3 = new LinkedList();
 		for (int i = 1; i < 9; i++) {
-			list = insertToTail(list3, i);
+			insertToTail(list3, i);
 		}
 		printList(list3);
 		rotateCounterClockwise(list3, 4);
