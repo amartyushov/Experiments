@@ -7,7 +7,6 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-import sun.jvm.hotspot.utilities.Interval;
 
 // https://leetcode.com/problems/merge-intervals/
 public class p56 {
